@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_codigo3_whatsapp/pages/calls_page.dart';
+import 'package:flutter_codigo3_whatsapp/pages/camera_page.dart';
+import 'package:flutter_codigo3_whatsapp/pages/chat_page.dart';
+import 'package:flutter_codigo3_whatsapp/pages/status_page.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -7,6 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin{
+
   late TabController _tabController;
 
   @override
@@ -14,7 +19,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     // TODO: implement initState
     super.initState();
 
-    _tabController = TabController(length: 4,vsync: this);
+    _tabController = TabController(length: 4,vsync: this,initialIndex: 1);
 
   }
 
@@ -39,7 +44,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             ),
             Tab(
               child: Text("CALLS", style: TextStyle(fontWeight: FontWeight.bold),),
-            ),
+            )
           ],
         ),
       ),
@@ -50,7 +55,15 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           color: Colors.white,
         ),
       ),
-      body: Center(),
+      body: TabBarView(
+        controller: _tabController,
+        children: [
+          CameraPage(),
+          ChatPage(),
+          StatusPage(),
+          CallsPage(),
+        ],
+      ),
     );
   }
 }
