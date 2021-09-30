@@ -11,12 +11,29 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  late Widget floatingWidget = Icon(Icons.message,color: Colors.white);
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _tabController = TabController(length: 4, vsync: this, initialIndex: 1);
+    _tabController.addListener(() {
+      switch(_tabController.index){
+        case 1:
+          floatingWidget=Icon(Icons.message,color: Colors.white);
+          break;
+        case 2:
+          floatingWidget=Icon(Icons.camera_alt,color: Colors.white);
+          break;
+        case 3:
+          floatingWidget=Icon(Icons.add_ic_call_sharp,color: Colors.white);
+          break;
+      }
+      setState(() {
+
+      });
+    });
   }
 
   @override
@@ -77,10 +94,7 @@ class _HomePageState extends State<HomePage>
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(
-          Icons.message,
-          color: Colors.white,
-        ),
+        child: floatingWidget
       ),
       body: TabBarView(
         controller: _tabController,
