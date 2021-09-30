@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo3_whatsapp/data/data_dummy.dart';
 import 'package:flutter_codigo3_whatsapp/models/user_chat_model.dart';
@@ -10,7 +9,7 @@ class ChatPage extends StatelessWidget {
     return ListView.builder(
       itemCount: dataListChat.length,
       itemBuilder: (BuildContext context, int index){
-        UserChat user= dataListChat[index];
+        UserChat user = dataListChat[index];
         return ItemChatWidget(userChat: user,);
       },
     );

@@ -7,11 +7,11 @@ class UserChat {
   bool isWriting;
 
   UserChat({
-      required this.nameUser,
-      required this.time,
-      required this.avatarUrl,
-      required this.message,
-      required this.countMessage,
-      required this.isWriting
+    required this.nameUser,
+    required this.time,
+    required this.avatarUrl,
+    required this.message,
+    required this.countMessage,
+    required this.isWriting
   });
 }

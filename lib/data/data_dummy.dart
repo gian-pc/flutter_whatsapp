@@ -5,7 +5,7 @@ List<UserChat> dataListChat = [
     nameUser: "Carolina Gonzales",
     time: "5.23",
     avatarUrl:
-        "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     message: "Ya estoy llegando",
     countMessage: 0,
     isWriting: false,
