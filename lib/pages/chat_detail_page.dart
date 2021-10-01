@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_codigo3_whatsapp/data/data_dummy.dart';
 
 class ChatDetailPage extends StatefulWidget {
   @override
@@ -39,6 +40,24 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
       ),
       body: Stack(
         children: [
+          ListView.builder(
+            shrinkWrap: true,
+            primary: false,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: messages.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Align(
+                alignment:messages[index].messageType=="yo"? Alignment.topRight:Alignment.topLeft,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: messages[index].messageType =="yo"? Theme.of(context).accentColor: Colors.grey.shade200
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  child: Text(messages[index].messageContent),
+                ),
+              );
+            },
+          ),
           Align(
             alignment: Alignment.bottomLeft,
             child: Row(children: [

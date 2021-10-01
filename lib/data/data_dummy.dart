@@ -1,4 +1,14 @@
+import 'package:flutter_codigo3_whatsapp/models/chat_message.dart';
 import 'package:flutter_codigo3_whatsapp/models/user_chat_model.dart';
+
+List<ChatMessage> messages = [
+  ChatMessage(messageContent: "Hola, Cómo estas?", messageType: "yo"),
+  ChatMessage(messageContent: "Muy bien, y tú?", messageType: "otro"),
+  ChatMessage(messageContent: "Muy bien también. Qué haces?", messageType: "yo"),
+  ChatMessage(messageContent: "Aprendiste Flutter?", messageType: "yo"),
+  ChatMessage(messageContent: "Estoy en eso, me va superbien", messageType: "otro"),
+  ChatMessage(messageContent: "Eso espero", messageType: "yo"),
+];
 
 List<UserChat> dataListChat = [
   UserChat(
