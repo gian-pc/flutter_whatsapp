@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo3_whatsapp/data/data_dummy.dart';
+import 'package:flutter_codigo3_whatsapp/models/chat_message.dart';
 
 class ChatDetailPage extends StatefulWidget {
   @override
@@ -43,16 +44,37 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
           ListView.builder(
             shrinkWrap: true,
             primary: false,
-            physics: NeverScrollableScrollPhysics(),
+            //physics: NeverScrollableScrollPhysics(),
             itemCount: messages.length,
             itemBuilder: (BuildContext context, int index) {
               return Align(
-                alignment:messages[index].messageType=="yo"? Alignment.topRight:Alignment.topLeft,
+                alignment: messages[index].messageType == "yo"
+                    ? Alignment.topRight
+                    : Alignment.topLeft,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: messages[index].messageType =="yo"? Theme.of(context).accentColor: Colors.grey.shade200
+                    color: messages[index].messageType == "yo"
+                        ? Color(0xffDCF8C6)
+                        : Colors.grey.shade200,
+                    borderRadius: BorderRadius.only(
+                      topLeft: messages[index].messageType=="otro"? Radius.circular(0):Radius.circular(16),
+                      bottomLeft: Radius.circular(16),
+                      bottomRight: Radius.circular(16),
+                      topRight:messages[index].messageType=="yo"? Radius.circular(0):Radius.circular(16),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26,
+                        offset: Offset(0, 5),
+                        blurRadius: 10,
+                      )
+                    ],
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 10,
+                  ),
+                  margin: EdgeInsets.symmetric(horizontal: 14, vertical: 5),
                   child: Text(messages[index].messageContent),
                 ),
               );
@@ -127,15 +149,26 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 3.0),
-                child: CircleAvatar(
-                  backgroundColor: Theme.of(context).accentColor,
-                  radius: 27.0,
-                  child: !isWriting
-                      ? Icon(Icons.mic, color: Colors.white, size: 28)
-                      : Icon(
-                          Icons.send,
-                          color: Colors.white,
-                        ),
+                child: GestureDetector(
+                  onTap: (){
+                    messages.add(
+                      ChatMessage(messageContent: "Practica Flutter", messageType: "yo")
+                    );
+                    setState(() {
+
+                    });
+
+                  },
+                  child: CircleAvatar(
+                    backgroundColor: Theme.of(context).accentColor,
+                    radius: 27.0,
+                    child: !isWriting
+                        ? Icon(Icons.mic, color: Colors.white, size: 28)
+                        : Icon(
+                            Icons.send,
+                            color: Colors.white,
+                          ),
+                  ),
                 ),
               )
             ]),
